@@ -4,15 +4,30 @@
 	<title>My First Animation on Create JS</title>
 	<script type="text/javascript" src="createjs-2013.05.14.min.js"></script>
 	<script type="text/javascript">
-		var stage;
-		var animaloop;
+		var stage
+		var animaloop1;
+		var animaloop2;
+		var animaloop3;
 
 		function init(){
 			stage = new createjs.Stage("myCanvas");
 
 			var horse1 = {
+				/*En "images" ingresamos el número de imagenes que formarán parte de la animación del jinete y su caballo*/
 				images: ["img/motion-horse1.png", "img/motion-horse2.png", "img/motion-horse3.png", "img/motion-horse4.png", "img/motion-horse5.png", "img/motion-horse6.png"],
+				/*en Frames definimos el tamaño de la clip en este caso corresponde al tamaño de las imagenes y todas tienen la misma medida*/
 				frames: {width:250, height:196},
+
+				/*En este valor definimos la animacion como "moveit y definimos los parametros de la siguiente forma:
+
+				0, 5 corresponde a que las imagenes cambiaran contando desde la 0 hasta la 5, siendo un total de 6 imágenes.
+
+				En el 3er parametro definimos si la animación es infinita, asignando "true" las imagenes cambiaran de la 1 hasta la 6 volveran a la 1 y así de manera infinita
+
+				En el 4to parametro definimos cada cuantos frames cada imagen cambiará, en este caso la images cambia cada 2 frames.
+
+				Le asignamos velocidades distintas entre sí a todos los "horse" cambiando sólo este parametro
+				"*/
 				animations: {moveit:[0,5,true,2]}
 			};
 			var horse2 = {
@@ -26,10 +41,12 @@
 				animations: {moveit:[0,5,true,2]}
 			};
 
+			/*Creamos variables para crear cada uno de los clip de animación correspondiente a cada "horse" con sus respectivas imágenes usando la clase "SpriteSheet"*/
 			var spriteImages1 = new createjs.SpriteSheet(horse1);
 			var spriteImages2 = new createjs.SpriteSheet(horse2);
 			var spriteImages3 = new createjs.SpriteSheet(horse3);
 
+			/*Creamos variables para definir las animaciones de cada uno de los "Horse"*/
 			animaloop1 = new createjs.BitmapAnimation(spriteImages1);
 			animaloop2 = new createjs.BitmapAnimation(spriteImages2);
 			animaloop3 = new createjs.BitmapAnimation(spriteImages3);
@@ -38,31 +55,41 @@
 			animaloop2.gotoAndPlay("moveit");
 			animaloop3.gotoAndPlay("moveit");
 
+			/*En 1er valor seteamos la posición en X
+			En el 2do valor seteamos la posición en Y
+			en el 3er y 4to valor seteamos la escala, siendo 1 el tamaño original de la imagen.
+			Le asignamos escalas y posiciones distintas para simular una perspectiva entre ellos
+			*/
 			animaloop1.setTransform(0,200,1,1);
 			animaloop2.setTransform(0,100,0.8,0.8);
 			animaloop3.setTransform(0,0,0.6,0.6);
 
-			createjs.Ticker.setFPS(30);
+			/*Definimos el Ticker y le asignamos la función "tick"*/
 			createjs.Ticker.addEventListener("tick", tick);
+			/*Definimos que la señal del ticker sera de una frecuencia de 30 por frames*/
+			createjs.Ticker.setFPS(30);
+			
+			/*Definimos la función "tick" y realizamos el desplazamiento de jinete con su caballo incrementando su posición en "X" tantos pixeles como queramos cada vez que la señal "ticker" o función "tick" se ejecute. Asignamos valores distintos para dar la sensación que unos caballos corren mas que otros*/
+			function tick(event){
+				animaloop1.x = animaloop1.x + 23;
+				animaloop2.x = animaloop2.x + 18;
+				animaloop3.x = animaloop3.x + 30;
+				stage.update();
+			}
 
+			/*Insertamos en nuestro stage los cuatro jinetes*/
 			stage.addChild(animaloop1);
 			stage.addChild(animaloop2);
 			stage.addChild(animaloop3);
-		 	stage.update();
-		}
-		function tick(event){
-			animaloop1.x = animaloop1.x + 23;
-			animaloop2.x = animaloop2.x + 18;
-			animaloop3.x = animaloop3.x + 30;
-			stage.update();
 		}
 	</script>
 </head>
+
 <body onload="init()">
 	Animation
 	<br/>
 	<canvas id="myCanvas" width="1200" height="600">
-		no soporta canvas
+		Tu Navegador no soporta canvas!
 	</canvas>
 </body>
 </html>
