@@ -13,16 +13,16 @@
 			stage = new createjs.Stage("myCanvas");
 
 			var horse1 = {
-				/*En "images" ingresamos el número de imagenes que formarán parte de la animación del jinete y su caballo*/
+				/*En "images" ingresamos el número de imágenes que formarán parte de la animación del jinete y su caballo*/
 				images: ["img/motion-horse1.png", "img/motion-horse2.png", "img/motion-horse3.png", "img/motion-horse4.png", "img/motion-horse5.png", "img/motion-horse6.png"],
-				/*en Frames definimos el tamaño de la clip en este caso corresponde al tamaño de las imagenes y todas tienen la misma medida*/
+				/*en Frames definimos el tamaño de la clip en este caso corresponde al tamaño de las imágenes y todas tienen la misma medida*/
 				frames: {width:250, height:196},
 
-				/*En este valor definimos la animacion como "moveit y definimos los parametros de la siguiente forma:
+				/*En este valor definimos la animación como "moveit y definimos los parametros de la siguiente forma:
 
-				0, 5 corresponde a que las imagenes cambiaran contando desde la 0 hasta la 5, siendo un total de 6 imágenes.
+				0, 5 corresponde a que las imágenes cambiaran contando desde la 0 hasta la 5, siendo un total de 6 imágenes.
 
-				En el 3er parametro definimos si la animación es infinita, asignando "true" las imagenes cambiaran de la 1 hasta la 6 volveran a la 1 y así de manera infinita
+				En el 3er parametro definimos si la animación es infinita, asignando "true" las imágenes cambiaran de la 1 hasta la 6 volveran a la 1 y así de manera infinita
 
 				En el 4to parametro definimos cada cuantos frames cada imagen cambiará, en este caso la images cambia cada 2 frames.
 
@@ -77,7 +77,7 @@
 				stage.update();
 			}
 
-			/*Insertamos en nuestro stage los cuatro jinetes*/
+			/*Insertamos en nuestro stage a los 3 jinetes*/
 			stage.addChild(animaloop1);
 			stage.addChild(animaloop2);
 			stage.addChild(animaloop3);
