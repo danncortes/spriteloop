@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My First Animation on Create JS</title>
+	<script type="text/javascript" src="createjs-2013.05.14.min.js"></script>
+	<script type="text/javascript">
+		var stage;
+		var animaloop;
+
+		function init(){
+			stage = new createjs.Stage("myCanvas");
+
+			var horse1 = {
+				images: ["motion-horse1.png", "motion-horse2.png", "motion-horse3.png", "motion-horse4.png", "motion-horse5.png", "motion-horse6.png"],
+				frames: {width:250, height:196},
+				animations: {moveit:[0,5,true,2]}
+			};
+			var horse2 = {
+				images: ["motion-horse1.png", "motion-horse2.png", "motion-horse3.png", "motion-horse4.png", "motion-horse5.png", "motion-horse6.png"],
+				frames: {width:250, height:196},
+				animations: {moveit:[0,5,true,3]}
+			};
+			var horse3 = {
+				images: ["motion-horse1.png", "motion-horse2.png", "motion-horse3.png", "motion-horse4.png", "motion-horse5.png", "motion-horse6.png"],
+				frames: {width:250, height:196},
+				animations: {moveit:[0,5,true,2]}
+			};
+
+			var spriteImages1 = new createjs.SpriteSheet(horse1);
+			var spriteImages2 = new createjs.SpriteSheet(horse2);
+			var spriteImages3 = new createjs.SpriteSheet(horse3);
+
+			animaloop1 = new createjs.BitmapAnimation(spriteImages1);
+			animaloop2 = new createjs.BitmapAnimation(spriteImages2);
+			animaloop3 = new createjs.BitmapAnimation(spriteImages3);
+
+			animaloop1.gotoAndPlay("moveit");
+			animaloop2.gotoAndPlay("moveit");
+			animaloop3.gotoAndPlay("moveit");
+
+			animaloop1.setTransform(0,200,1,1);
+			animaloop2.setTransform(0,100,0.8,0.8);
+			animaloop3.setTransform(0,0,0.6,0.6);
+
+			createjs.Ticker.setFPS(30);
+			createjs.Ticker.addEventListener("tick", tick);
+
+			stage.addChild(animaloop1);
+			stage.addChild(animaloop2);
+			stage.addChild(animaloop3);
+		 	stage.update();
+		}
+		function tick(event){
+			animaloop1.x = animaloop1.x + 23;
+			animaloop2.x = animaloop2.x + 18;
+			animaloop3.x = animaloop3.x + 30;
+			stage.update();
+		}
+	</script>
+</head>
+<body onload="init()">
+	Animation
+	<br/>
+	<canvas id="myCanvas" width="1200" height="600">
+		no soporta canvas
+	</canvas>
+</body>
+</html>
