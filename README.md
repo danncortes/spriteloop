@@ -9,11 +9,11 @@ http://code.createjs.com/
 
 Debé importarse dentro del "head" de nuestro sitio
 
-<code>
+```
 	<head>
 		<script type="text/javascript" src="createjs-2013.05.14.min.js"></script>
 	</head>
-</code>
+``
 
 El demo contempla la creación de 3 animaciónes, creando 3 elementos que reproducen un determinado numero de imágenes o cuadros de forma repetitiva que simula el movimiento de un jinete sobre su caballo, los 3 objetos a su vez tienen desplazamientos de manera horizontal con velocidades distintas simulando una carrera.
 
